@@ -30,5 +30,6 @@ func main() {
 		configs.DB.Disconnect(context.Background())
 	}()
 
-	app.Listen("localhost:3000")
+	port, _ := configs.GetEnvVariable("PORT")
+	app.Listen(":" + port)
 }
