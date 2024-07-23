@@ -14,9 +14,8 @@ Design a basic web API for user which performs CURD (Create, Update, Read and De
 
 ```go
 type User struct {
-  ID        string `json:"id"`
-  FirstName string `json:"first_name"`
-  LastName  string `json:"last_name"`
-  Email     string `json:"email"`
+  ID       primitive.ObjectID `json:"id,omitempty" bson:"_id,omitempty"`
+  Name     string             `json:"name" bson:"name"`
+  Title    string             `json:"title" bson:"title"`
 }
 ```
