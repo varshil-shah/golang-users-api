@@ -31,5 +31,10 @@ func main() {
 	}()
 
 	port, _ := configs.GetEnvVariable("PORT")
-	app.Listen(":" + port)
+
+	if port == "" {
+		port = "3000"
+	}
+
+	app.Listen("0.0.0.0" + port)
 }
