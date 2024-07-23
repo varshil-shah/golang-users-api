@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/varshil-shah/golang-users-api/configs"
 	"github.com/varshil-shah/golang-users-api/routers"
 )
@@ -13,6 +14,8 @@ func main() {
 	fmt.Println("Welcome to API using GoLang, GoFiber & MongoDB!")
 
 	app := fiber.New()
+
+	app.Use(cors.New())
 
 	configs.ConnectDatabase()
 
