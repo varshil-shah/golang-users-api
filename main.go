@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/gofiber/fiber/v2"
@@ -21,5 +22,10 @@ func main() {
 		return context.JSON(&fiber.Map{"data": "Hello from GoFiber & MongoDB"})
 	})
 
-	app.Listen(":3000")
+	defer func() {
+		fmt.Println("MongoDB connection disconnected!")
+		configs.DB.Disconnect(context.Background())
+	}()
+
+	app.Listen("localhost:3000")
 }
